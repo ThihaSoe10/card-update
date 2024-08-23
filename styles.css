@@ -1,0 +1,144 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom right, #2c3e50, #4b2c77); /* Blue to purple gradient background */
+    color: #e0e0e0; /* Light text color for contrast */
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar {
+    width: 100%;
+    background: linear-gradient(to right, #4b2c77, #6a1f8a); /* Blue to purple gradient */
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Lighter shadow for depth */
+}
+
+.menu-icon {
+    display: none;
+    font-size: 28px;
+    color: #e0e0e0;
+    cursor: pointer;
+}
+
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.navbar ul li {
+    flex: 1;
+}
+
+.navbar ul li a {
+    display: block;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    color: #e0e0e0;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+}
+
+.navbar ul li a:hover {
+    background: linear-gradient(to right, #6a1f8a, #4b2c77); /* Reverse gradient effect on hover */
+    color: #fff; /* White text color on hover */
+}
+
+.content-container {
+    text-align: center;
+    margin: 0; /* Remove margin */
+    padding: 20px;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 800px; /* Limit the width */
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #d0d0d0; /* Slightly lighter text color for heading */
+}
+
+span {
+    color: #ffffff;
+    font-size: 2.5rem;
+}
+
+.code-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.code {
+    font-size: 3rem;
+    font-weight: bold;
+    letter-spacing: 0.2rem;
+    background: linear-gradient(to right, #4b2c77, #6a1f8a); /* Blue to purple gradient for code box */
+    color: #e0e0e0; /* Light text color */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Lighter shadow for depth */
+    word-wrap: break-word;
+}
+
+@media screen and (max-width: 768px) {
+    .menu-icon {
+        display: block;
+    }
+
+    .navbar ul {
+        display: none; /* Hide the menu initially */
+        flex-direction: column;
+        width: 100%;
+        background: linear-gradient(to bottom, #4b2c77, #6a1f8a); /* Gradient background for mobile menu */
+        position: absolute;
+        top: 60px; /* Adjust top to be below the navbar */
+        left: 0;
+    }
+
+    .navbar ul li {
+        width: 100%;
+    }
+
+    .navbar ul li a {
+        padding: 10px;
+        font-size: 1.2rem;
+    }
+
+    .navbar ul.show {
+        display: flex; /* Show the menu when toggled */
+    }
+
+    .content-container {
+        padding: 10px;
+        margin: 0; /* Remove margin */
+    }
+
+    .code {
+        font-size: 2.5rem;
+        padding: 15px;
+        max-width: 90%;
+        margin: 0 auto;
+        word-break: break-all;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+}

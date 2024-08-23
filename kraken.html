@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kraken</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="menu-icon" id="menu-icon">
+            &#9776;
+        </div>
+        <ul id="navbar-links">
+            <li><a href="yeti.html">Yeti</a></li>
+            <li><a href="Cyclops.html">Cyclops</a></li>
+            <li><a href="valkyrie.html">Valkyrie</a></li>
+            <li><a href="chimera.html">Chimera</a></li>
+            <li><a href="kraken.html">Kraken</a></li>
+            <li><a href="griffin.html">Griffin</a></li>
+            <li><a href="ogre.html">Ogre</a></li>
+            <li><a href="fenrir.html">Fenrir</a></li>
+        </ul>
+    </nav>
+
+    <div class="content-container">
+        <h1>Enter this code to open <br><br><span>Kraken</span></h1>
+        <div class="code-container">
+            <div class="code">Waiting...</div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("menu-icon").addEventListener("click", function() {
+            var navbarLinks = document.getElementById("navbar-links");
+            if (navbarLinks.classList.contains("show")) {
+                navbarLinks.classList.remove("show");
+            } else {
+                navbarLinks.classList.add("show");
+            }
+        });
+
+        const passwords = [
+            'Z8tM9L', 'Y3rK2V', // Sunday
+            'X1pW4Q', 'N6yX5C', // Monday
+            'J9mL8N', 'Q2rO3J', // Tuesday
+            'B5vF7M', 'R7qK1G', // Wednesday
+            'C6wN4R', 'D9jT8Y', // Thursday
+            'A4bX2Z', 'S1pV7Q', // Friday
+            'L3nJ5C', 'M6kL9M'  // Saturday
+        ];
+
+        function generateCode() {
+            const now = new Date();
+            const dayOfWeekUTC = now.getUTCDay();
+            const hoursUTC = now.getUTCHours();
+            const isAM = hoursUTC >= 0 && hoursUTC < 12;
+            const index = dayOfWeekUTC * 2 + (isAM ? 0 : 1);
+            return passwords[index];
+        }
+
+        function updateCode() {
+            const codeElement = document.querySelector('.code');
+            const newCode = generateCode();
+            codeElement.textContent = newCode;
+        }
+
+        updateCode();
+        setInterval(updateCode, 60000);
+    </script>
+</body>
+</html>

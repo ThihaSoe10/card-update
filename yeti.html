@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yeti</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="menu-icon" id="menu-icon">
+            &#9776; <!-- This is the hamburger icon (≡) -->
+        </div>
+        <ul id="navbar-links">
+            <li><a href="yeti.html">Yeti</a></li>
+            <li><a href="Cyclops.html">Cyclops</a></li>
+            <li><a href="valkyrie.html">Valkyrie</a></li>
+            <li><a href="chimera.html">Chimera</a></li>
+            <li><a href="kraken.html">Kraken</a></li>
+            <li><a href="griffin.html">Griffin</a></li>
+            <li><a href="ogre.html">Ogre</a></li>
+            <li><a href="fenrir.html">Fenrir</a></li>
+        </ul>
+    </nav>
+
+    <div class="content-container">
+        <h1>Enter this code to open <br><br><span>Yeti</span></h1>
+        <div class="code-container">
+            <div class="code">Waiting...</div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("menu-icon").addEventListener("click", function() {
+            var navbarLinks = document.getElementById("navbar-links");
+            if (navbarLinks.classList.contains("show")) {
+                navbarLinks.classList.remove("show");
+            } else {
+                navbarLinks.classList.add("show");
+            }
+        });
+
+        // Array of possible codes for each 12-hour period over 7 days
+        const passwords = [
+            'G7hK8L', 'P2nX5Z', // Sunday
+            'V4rM9Q', 'J6yT3B', // Monday
+            'L8vW7N', 'C1mK4R', // Tuesday
+            'Q3zY2F', 'D5pL6S', // Wednesday
+            'E9wV1X', 'H2bT7M', // Thursday
+            'R4jP8G', 'K6nW3C', // Friday
+            'M1xQ9F', 'Z7tL5J'  // Saturday
+        ];
+
+        // Function to generate the code based on UTC time
+        function generateCode() {
+            const now = new Date();
+            const dayOfWeekUTC = now.getUTCDay(); // 0 (Sunday) to 6 (Saturday)
+            const hoursUTC = now.getUTCHours();
+
+            // Determine if it's the AM or PM code
+            const isAM = hoursUTC >= 0 && hoursUTC < 12;
+            const index = dayOfWeekUTC * 2 + (isAM ? 0 : 1);
+
+            return passwords[index];
+        }
+
+        // Function to update the code in the HTML
+        function updateCode() {
+            const codeElement = document.querySelector('.code');
+            const newCode = generateCode();
+            codeElement.textContent = newCode;
+        }
+
+        // Initially, display the code
+        updateCode();
+
+        // Set an interval to check and update the code every minute (60000 milliseconds)
+        setInterval(updateCode, 60000);
+    </script>
+</body>
+</html>
